@@ -24,16 +24,16 @@ export const styleMap = [
 ];
 
 export const iconMap = {
-  Plus: FaPlus,
-  Facebook: FaFacebook,
-  Twitter: FaTwitter,
-  Vimeo: FaVimeo,
-  Youtube: FaYoutube,
-  Spinner: FaSpinner,
-  UserCircle: FaUserCircle,
-  Times: FaTimes,
-  ChevronDown: FaChevronDown,
-  ChevronUp: FaChevronUp,
-  CircleCheck: FaCircleCheck,
+  plus: FaPlus,
+  facebook: FaFacebook,
+  twitter: FaTwitter,
+  vimeo: FaVimeo,
+  youtube: FaYoutube,
+  spinner: FaSpinner,
+  userCircle: FaUserCircle,
+  times: FaTimes,
+  chevronDown: FaChevronDown,
+  chevronUp: FaChevronUp,
+  circleCheck: FaCircleCheck,
   // COMPONENT ARRAY
 };

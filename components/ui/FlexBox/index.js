@@ -26,6 +26,7 @@ function FlexBox({
   paddingLeft,
   paddingVertical,
   paddingHorizontal,
+  setPositionRelative,
   style,
   ...props
 }) {
@@ -44,7 +45,7 @@ function FlexBox({
   }
   return (
     <BaseElement
-      renderAs={renderAs}
+      alignItems={alignItems}
       className={classnames(
         {
           [styles[`gap-${gap}`]]: gap,
@@ -61,13 +62,14 @@ function FlexBox({
         className
       )}
       display={isInlineFlex ? 'inline-flex' : 'flex'}
-      flexGrow={flexGrow}
-      flexWrap={flexWrap}
-      flexShrink={flexShrink}
-      justifyContent={justifyContent}
-      alignItems={alignItems}
       flexDirection={flexDirection}
+      flexGrow={flexGrow}
+      flexShrink={flexShrink}
+      flexWrap={flexWrap}
+      justifyContent={justifyContent}
+      renderAs={renderAs}
       {...props}
+      setPositionRelative={setPositionRelative}
       style={styleObject}
     >
       {children}
@@ -98,8 +100,8 @@ FlexBox.propTypes = {
     'column-reverse',
   ]),
   flexWrap: PropTypes.oneOf(['nowrap', 'wrap', 'wrap-reverse']),
-  flexGrow: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
-  flexShrink: PropTypes.oneOf(['0', '1', '2', '3', '4', '5']),
+  flexGrow: PropTypes.oneOf(['0', 1, 2, 3, 4, 5]),
+  flexShrink: PropTypes.oneOf(['0', 1, 2, 3, 4, 5]),
   flex: PropTypes.string,
   flexBasis: PropTypes.string,
   gap: PropTypes.oneOf(['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl']),
@@ -115,6 +117,7 @@ FlexBox.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   style: PropTypes.object,
+  setPositionRelative: PropTypes.bool,
 };
 
 FlexBox.defaultProps = {

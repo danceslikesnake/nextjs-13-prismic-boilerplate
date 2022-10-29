@@ -33,14 +33,21 @@ function BaseElement({
   children,
   domRef,
   className,
+  setPositionRelative,
   ...allProperties
 }) {
   const RenderAs = renderAs;
   const [classNames, properties] = useElementClassNames(allProperties);
   return (
     <RenderAs
+      className={classnames(
+        className,
+        {
+          [styles.setRelative]: setPositionRelative,
+        },
+        classNames
+      )}
       ref={domRef}
-      className={classnames(className, classNames)}
       {...properties}
     >
       {children}
@@ -90,6 +97,7 @@ BaseElement.propTypes = {
     'right',
   ]),
   style: PropTypes.object,
+  setPositionRelative: PropTypes.bool,
 };
 
 BaseElement.defaultProps = {

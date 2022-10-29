@@ -1,0 +1,110 @@
+@import "styles/utils/all";
+
+.hero {
+  height: 100vh;
+}
+
+.heroImage {
+  height: 100vh;
+  @include positionAbsolute($cover: true);
+  @include set-z-index('base');
+  &::before {
+    background: rgba($color-vader-black, 0.35);
+    @include pseudos;
+    @include set-z-index('above-base');
+    @include positionAbsolute($cover: true);
+  }
+
+  img {
+   object-fit: cover;
+  }
+}
+
+.heroContent {
+  width: 75vw;
+  color: $color-off-white;
+  @include positionAbsolute($center: true);
+}
+
+.extraInfo {
+  font-size: type-scale(-1);
+  text-transform: uppercase;
+  position: relative;
+  padding-left: v-rhythm(4);
+  color: $color-razzmatazz-pink;
+  @include apercu-mono;
+
+  &::after {
+    height: 2px;
+    width: v-rhythm(3);
+    background: rgba($color-razzmatazz-pink, 0.5);
+    @include pseudos;
+    @include positionAbsolute($left: 0, $bottom: 0);
+  }
+
+  &.nextjs {
+    color: $color-marigold-yellow;
+
+    &::after {
+      background: rgba($color-marigold-yellow, 0.5);
+    }
+  }
+}
+
+.headline {
+  font-size: type-scale(3);
+  margin-bottom: v-rhythm(3);
+  padding-top: v-rhythm(1);
+  @include din-2014-demi;
+}
+
+.description {
+  opacity: 0.75;
+}
+
+.corners {
+  border: 1px dashed rgba(white, 0.15);
+  @include set-z-index('content');
+  @include positionFixed($top: v-rhythm(3), $right: v-rhythm(3), $bottom: v-rhythm(3), $left: v-rhythm(3));
+
+  i {
+    border-color: white;
+    opacity: 0.5;
+    width: v-rhythm(2);
+    height: v-rhythm(2);
+    display: block;
+    @include set-z-index('above-content');
+
+    &:nth-child(1) {
+      border-top-width: 2px;
+      border-top-style: solid;
+      border-left-width: 2px;
+      border-left-style: solid;
+      @include positionFixed($top: v-rhythm(3), $left: v-rhythm(3));
+    }
+
+    &:nth-child(2) {
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+      border-left-width: 2px;
+      border-left-style: solid;
+      @include positionFixed($bottom: v-rhythm(3), $left: v-rhythm(3));
+    }
+
+    &:nth-child(3) {
+      border-top-width: 2px;
+      border-top-style: solid;
+      border-right-width: 2px;
+      border-right-style: solid;
+      @include positionFixed($top: v-rhythm(3), $right: v-rhythm(3));
+    }
+
+    &:nth-child(4) {
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+      border-right-width: 2px;
+      border-right-style: solid;
+      @include positionFixed($bottom: v-rhythm(3), $right: v-rhythm(3));
+    }
+  }
+}

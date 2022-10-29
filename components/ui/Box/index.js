@@ -20,6 +20,7 @@ function Box({
   paddingVertical,
   paddingHorizontal,
   style,
+  setPositionRelative,
   ...props
 }) {
   let styleObject = { ...style };
@@ -37,8 +38,6 @@ function Box({
   }
   return (
     <BaseElement
-      renderAs={renderAs}
-      display={display}
       className={classnames(
         {
           [styles[`padding-${padding}`]]: padding,
@@ -52,6 +51,9 @@ function Box({
         },
         className
       )}
+      display={display}
+      renderAs={renderAs}
+      setPositionRelative={setPositionRelative}
       {...props}
       style={styleObject}
     >
@@ -81,6 +83,7 @@ Box.propTypes = {
    Set this to whatever HTML element you want a `<Box />` to render as. A `<Box />` will accept any props applicable to the HTML element.
    */
   renderAs: PropTypes.string,
+  setPositionRelative: PropTypes.bool,
 };
 
 Box.defaultProps = {

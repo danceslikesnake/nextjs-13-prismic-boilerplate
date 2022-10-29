@@ -29,7 +29,7 @@ module.exports = function (plop) {
         {
           path: 'components/ui/IconFontAwesome/maps.js',
           pattern: /(\/\/ COMPONENT ARRAY)/g,
-          template: '{{properCase name}}: Fa{{properCase name}},\n  $1',
+          template: '{{camelCase name}}: Fa{{properCase name}},\n  $1',
           type: 'modify',
         },
       ];

@@ -3,13 +3,13 @@
 .overlay {
   opacity: 0;
   pointer-events: none;
-  background: rgba($color-ck-dark-raisin, 0);
+  background: rgba($color-charcoal, 0);
   @include positionFixed($cover: true);
   @include set-z-index('below-modals');
   @include transition(all 0.225s);
 
   &.reveal {
-    background: rgba($color-ck-dark-raisin, 0.65);
+    background: rgba($color-charcoal, 0.65);
     opacity: 1;
     pointer-events: all;
     cursor: pointer;
@@ -17,7 +17,7 @@
 }
 
 .panel {
-  background: $color-ck-independence-grey;
+  background: $color-off-white;
   width: 100vw;
   @include positionFixed($top: 0, $right: calc(-100% - 24px));
   @include set-z-index('modals');
@@ -42,7 +42,7 @@
     @include set-z-index('below-modals');
     @include positionAbsolute($top: 0, $bottom: 0, $left: v-rhythm(-3));
     @include pseudos;
-    @include background-gradient($start-color: rgba($color-ck-dark-raisin, 0), $end-color: rgba($color-ck-dark-raisin, 0.5), $orientation: 'horizontal');
+    @include background-gradient($start-color: rgba($color-charcoal, 0), $end-color: rgba($color-charcoal, 0.5), $orientation: 'horizontal');
   }
 }
 
@@ -53,7 +53,7 @@
   @include pseudos;
   @include positionAbsolute($top: 74px, $left: 8px, $right: 8px);
   @include set-z-index('above-content');
-  @include background-gradient($start-color: rgba(red, 0), $end-color: rgba($color-ck-dark-raisin, 0.75), $orientation: 'vertical');
+  @include background-gradient($start-color: rgba(red, 0), $end-color: rgba($color-charcoal, 0.75), $orientation: 'vertical');
 }
 
 .contentBottomShadow {
@@ -63,7 +63,7 @@
   @include pseudos;
   @include positionAbsolute($bottom: 0, $left: 8px, $right: 8px);
   @include set-z-index('above-modals');
-  @include background-gradient($start-color: rgba($color-ck-dark-raisin, 0.75), $end-color: rgba($color-ck-dark-raisin, 0), $orientation: 'vertical');
+  @include background-gradient($start-color: rgba($color-charcoal, 0.75), $end-color: rgba($color-charcoal, 0), $orientation: 'vertical');
   @include border-radius(v-rhythm(1), 'bottom');
 }
 
@@ -71,15 +71,14 @@
   padding: v-rhythm(2) v-rhythm(3);
 
   &__text {
-    color: $color-ck-gainsboro-white;
-    @include sofia-pro-semibold;
+    color: $color-off-white;
     @include rs-type-scale(1);
   }
 }
 
 .closeButton {
-  background: $color-ck-raisin;
-  color: $color-ck-roman-silver;
+  background: $color-charcoal;
+  color: $color-off-white;
   border: none;
   width: v-rhythm(5);
   line-height: v-rhythm(5);
@@ -92,7 +91,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  background: $color-ck-raisin;
+  background: $color-charcoal;
   margin: 0 v-rhythm(1);
   padding: v-rhythm(2) v-rhythm(2) v-rhythm(2) v-rhythm(2);
   overflow-y: auto;
