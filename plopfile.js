@@ -1,21 +1,5 @@
 const fs = require('fs');
 
-const files = fs.readdirSync('./models/');
-
-const toPascalCase = (str) => {
-  return str.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-};
-
-const getModels = () => {
-  const allModels = [];
-  files.forEach((file) => {
-    allModels.push(file.replace('.js', ''));
-  });
-  return allModels;
-};
-
 module.exports = function (plop) {
   // create your generators here
   plop.setGenerator('icon', {
@@ -169,79 +153,21 @@ module.exports = function (plop) {
       },
     ],
   });
-  plop.setGenerator('model', {
-    description: 'Generates a mongoose model',
+  plop.setGenerator('apiCall', {
+    description: 'Generates an api call',
     prompts: [
       {
         type: 'input',
         name: 'name',
-        message: 'What is the name of your model?',
+        message: 'What is the name of your api call?',
       },
     ],
     actions: [
       {
         type: 'add',
-        path: 'models/{{properCase name}}.js',
-        templateFile: 'plop-templates/model.hbs',
+        path: 'pages/api/{{camelCase name}}.js',
+        templateFile: 'plop-templates/apiCall.hbs',
       },
     ],
-  });
-  plop.setGenerator('apiCall', {
-    description: 'Generates a mongoose model',
-    prompts:
-      files.length > 0
-        ? [
-            {
-              type: 'input',
-              name: 'name',
-              message: 'What is the name of your api call?',
-            },
-            {
-              type: 'checkbox',
-              name: 'models',
-              message: 'What models do you want to add to your api call?',
-              choices: getModels(),
-            },
-          ]
-        : [
-            {
-              type: 'input',
-              name: 'name',
-              message: 'What is the name of your api call?',
-            },
-          ],
-    actions: (data) => {
-      const actions = [
-        {
-          type: 'add',
-          path: 'pages/api/{{camelCase name}}.js',
-          templateFile: 'plop-templates/apiCall.hbs',
-        },
-      ];
-
-      if (data.models && data.models.length > 0) {
-        data.models.forEach((model) => {
-          actions.push({
-            path: 'pages/api/{{camelCase name}}.js',
-            pattern: /(\/\/ MODEL IMPORT)/g,
-            template:
-              '\n' +
-              `import ${toPascalCase(model)} from '../../models/${toPascalCase(
-                model
-              )}';$1`,
-            type: 'modify',
-          });
-        });
-      }
-
-      actions.push({
-        path: 'pages/api/{{camelCase name}}.js',
-        pattern: /(\/\/ MODEL IMPORT)/g,
-        template: '',
-        type: 'modify',
-      });
-
-      return actions;
-    },
   });
 };
