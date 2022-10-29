@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'ApercuMono';
+  src: url('/fonts/apercu-mono/Apercu-Mono.eot');
+  src: url('/fonts/apercu-mono/Apercu-Mono.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/apercu-mono/Apercu-Mono.woff2') format('woff2'),
+  url('/fonts/apercu-mono/Apercu-Mono.woff') format('woff'),
+  url('/fonts/apercu-mono/Apercu-Mono.ttf') format('truetype'),
+  url('/fonts/apercu-mono/Apercu-Mono.svg#ApercuMono') format('svg');
+  font-display: swap;
+}
+
+@mixin din-2014 {
+  font-family: din-2014, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin din-2014-demi {
+  font-family: din-2014, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@mixin din-2014-bold {
+  font-family: din-2014, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin neue-haas-grotesk-display-light {
+  font-family: neue-haas-grotesk-display, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin neue-haas-grotesk-display-bold {
+  font-family: neue-haas-grotesk-display, sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+@mixin neue-haas-grotesk {
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin neue-haas-grotesk-medium {
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@mixin neue-haas-grotesk-bold {
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin apercu-mono {
+  font-family: "ApercuMono", monospace;
+  font-weight: normal;
+  font-style: normal;
+}

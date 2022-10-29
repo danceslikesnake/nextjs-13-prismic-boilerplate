@@ -1,0 +1,28 @@
+import { createSelector, createSlice } from '@reduxjs/toolkit';
+
+const initialState = {};
+
+const {{lowerCase name}}Slice = createSlice({
+  name: '{{lowerCase name}}',
+  initialState,
+  reducers: {
+    reset{{properCase name}}: (state) => {
+      return { ...state, ...initialState };
+    },
+    update{{properCase name}}: (state, action) => {
+      return { ...state, ...action.payload };
+    },
+  },
+});
+
+export const {
+  reset{{properCase name}},
+  update{{properCase name}},
+} = {{lowerCase name}}Slice.actions;
+
+export default {{lowerCase name}}Slice.reducer;
+
+export const select{{properCase name}}State = createSelector(
+  (state) => state.{{lowerCase name}},
+  ({{lowerCase name}}) => {{lowerCase name}}
+);

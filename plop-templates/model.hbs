@@ -1,0 +1,8 @@
+import mongoose from 'mongoose';
+
+const {{properCase name}}Schema = new mongoose.Schema(
+  {},
+  { timestamps: true }
+);
+
+module.exports = mongoose.models.{{properCase name}} || mongoose.model('{{properCase name}}', {{properCase name}}Schema);

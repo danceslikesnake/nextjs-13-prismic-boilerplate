@@ -1,0 +1,17 @@
+@import '../config';
+
+@function color-shader($color-name: '#000000', $level: 0) {
+  $color: $color-name;
+  $color-base: if($level < 0, black, white);
+  $mix-level: if($level < 0, ($level * -1), $level);
+
+  @return mix($color-base, $color, $mix-level * $color-interval);
+}
+
+@function v-rhythm($multiplier, $dense: false) {
+  $factor: map_get($config, 'grid-base');
+  @if $dense {
+    $factor: map_get($config, 'grid-base-dense')
+  }
+  @return #{$multiplier * $factor + 'px'};
+}

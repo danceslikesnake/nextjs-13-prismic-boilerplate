@@ -1,0 +1,31 @@
+@import "fonts";
+@import "./vendor/bulma/config";
+@import "./base/all";
+
+.container {
+  @include media_queries($until: 767px) {
+    padding-left: v-rhythm(2);
+    padding-right: v-rhythm(2);
+  }
+  @include media_queries($from: 768px) {
+    padding-left: v-rhythm(4);
+    padding-right: v-rhythm(4);
+  }
+  @include media_queries($super-hd) {
+
+  }
+
+  &.is-fluid {
+    @include media_queries($until: 767px) {
+      padding-left: v-rhythm(2);
+      padding-right: v-rhythm(2);
+    }
+  }
+}
+
+.test {
+  @include apercu-mono;
+}
+.test-2 {
+  @include neue-haas-grotesk;
+}

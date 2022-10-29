@@ -1,0 +1,24 @@
+@import "styles/utils/all";
+
+.spacer {
+  display: block;
+  &.horizontal {
+    display: inline-block;
+    &.xxs {width: $spacer-xxs;}
+    &.xs {width: $spacer-xs;}
+    &.s {width: $spacer-s;}
+    &.m {width: $spacer-m;}
+    &.l {width: $spacer-l;}
+    &.xl {width: $spacer-xl;}
+    &.xxl {width: $spacer-xxl;}
+  }
+  &.vertical {
+    &.xxs {height: $spacer-xxs;}
+    &.xs {height: $spacer-xs;}
+    &.s {height: $spacer-s;}
+    &.m {height: $spacer-m;}
+    &.l {height: $spacer-l;}
+    &.xl {height: $spacer-xl;}
+    &.xxl {height: $spacer-xxl;}
+  }
+}

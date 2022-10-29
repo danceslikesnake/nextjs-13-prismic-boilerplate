@@ -1,0 +1,22 @@
+import { fa{{properCase name}} } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
+
+const Fa{{properCase name}} = ({ spin, beat, fade, rotation, flip }) => {
+  return (
+    <FontAwesomeIcon
+      icon={ fa{{properCase name}} }
+      spin={spin}
+      beat={beat}
+      fade={fade}
+      rotation={rotation}
+      flip={flip}
+    />
+  );
+};
+
+Fa{{properCase name}}.propTypes = {
+  spin: PropTypes.bool,
+};
+
+export default Fa{{properCase name}};

@@ -1,0 +1,190 @@
+@import '../config';
+
+@mixin position(
+  $position,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null,
+  $cover: false,
+  $center: false,
+  $align: null
+) {
+  position: $position;
+
+  @if $center {
+    @include set-prefix(transform, translate(-50%, -50%));
+    top: 50%;
+    left: 50%;
+  } @else {
+    top: if($cover, 0, $top);
+    right: if($cover, 0, $right);
+    bottom: if($cover, 0, $bottom);
+    left: if($cover, 0, $left);
+  }
+
+  @if $align == 'vertical' {
+    @include set-prefix(transform, translateY(-50%));
+  } @else if $align == 'horizontal' {
+    @include set-prefix(transform, translateX(-50%));
+  } @else if $align == 'both' {
+    @include set-prefix(transform, translate(-50%, -50%));
+  }
+}
+
+@mixin pseudos {
+  content: '';
+  display: block;
+}
+
+@mixin button-reset {
+  outline: none;
+  cursor: pointer;
+}
+
+@mixin positionAbsolute($args...) {
+  @include position(absolute, $args...);
+}
+
+@mixin positionRelative($args...) {
+  @include position(relative, $args...);
+}
+
+@mixin positionFixed($args...) {
+  @include position(fixed, $args...);
+}
+
+@mixin positionReset {
+  position: initial;
+  top: initial;
+  right: initial;
+  bottom: initial;
+  left: initial;
+}
+
+@mixin transition($props...) {
+  @include set-prefix(transition, $props);
+}
+
+@mixin transform($method) {
+  @include set-prefix(transform, $method);
+}
+
+@mixin border-radius($amount, $side: null) {
+  @if $side == 'top' {
+    border-top-right-radius: $amount;
+    border-top-left-radius: $amount;
+  } @else if $side == 'bottom' {
+    border-bottom-right-radius: $amount;
+    border-bottom-left-radius: $amount;
+  } @else if $side == 'right' {
+    border-top-right-radius: $amount;
+    border-bottom-right-radius: $amount;
+  } @else if $side == 'left' {
+    border-top-left-radius: $amount;
+    border-bottom-left-radius: $amount;
+  } @else if $side == 'topLeft' {
+    border-top-left-radius: $amount;
+  } @else if $side == 'topRight' {
+    border-top-right-radius: $amount;
+  } @else if $side == 'bottomLeft' {
+    border-bottom-left-radius: $amount;
+  } @else if $side == 'bottomRight' {
+    border-bottom-right-radius: $amount;
+  } @else {
+    -webkit-border-radius: $amount;
+    -moz-border-radius: $amount;
+    border-radius: $amount;
+  }
+}
+
+@mixin background-gradient($start-color: null, $end-color: null, $orientation: null) {
+  background: $start-color;
+
+  @if $orientation == 'horizontal' {
+    background: -moz-linear-gradient(90deg, $start-color 0%, $end-color 100%);
+    background: -webkit-linear-gradient(90deg, $start-color 0%, $end-color 100%);
+    background: linear-gradient(90deg, $start-color 0%, $end-color 100%);
+  } @else if $orientation == 'radial' {
+    background: -moz-radial-gradient(circle, $start-color 0%, $end-color 100%);
+    background: -webkit-radial-gradient(circle, $start-color 0%, $end-color 100%);
+    background: radial-gradient(circle, $start-color 0%, $end-color 100%);
+  } @else if $orientation == 'diagonal right' {
+    background: -moz-linear-gradient(45deg, $start-color 0%, $end-color 100%);
+    background: -webkit-linear-gradient(45deg, $start-color 0%, $end-color 100%);
+    background: linear-gradient(45deg, $start-color 0%, $end-color 100%);
+  } @else if $orientation == 'diagonal left' {
+    background: -moz-linear-gradient(315deg, $start-color 0%, $end-color 100%);
+    background: -webkit-linear-gradient(315deg, $start-color 0%, $end-color 100%);
+    background: linear-gradient(315deg, $start-color 0%, $end-color 100%);
+  } @else {
+    background: -moz-linear-gradient(0deg, $start-color 0%, $end-color 100%);
+    background: -webkit-linear-gradient(0deg, $start-color 0%, $end-color 100%);
+    background: linear-gradient(0deg, $start-color 0%, $end-color 100%);
+  }
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin set-z-index($level) {
+  z-index: map_get($z-index, $level);
+}
+
+@mixin set-prefix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  #{$property}: #{$value};
+}
+
+@mixin aspect-ratio($x,$y, $target: '> :first-child', $pseudo: false) {
+  $padding: unquote( ( $y / $x ) * 100 + '%' );
+  @if $pseudo {
+    &:before {
+      width: 100%;
+      padding-top: $padding;
+      position: relative;
+      @include pseudos;
+    }
+  } @else {
+    position: relative;
+    padding-top: $padding;
+  }
+
+  #{$target} {
+    @include positionAbsolute($cover: true)
+  }
+}
+
+@mixin text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin text-ellipsis-multiple {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @supports (-webkit-line-clamp: 2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}

@@ -1,0 +1,30 @@
+@import "styles/utils/all";
+@import "utils/sharedStyles/padding.module";
+
+.gap {
+  &-xxs {
+    gap: $spacer-xxs;
+  }
+  &-xs {
+    gap: $spacer-xs;
+  }
+  &-s {
+    gap: $spacer-s;
+  }
+  &-m {
+    gap: $spacer-m;
+  }
+  &-l {
+    gap: $spacer-l;
+  }
+  &-xl {
+    gap: $spacer-xl;
+  }
+  &-xxl {
+    gap: $spacer-xxl;
+  }
+}
+
+.minWidth {
+  min-width: 0;
+}
