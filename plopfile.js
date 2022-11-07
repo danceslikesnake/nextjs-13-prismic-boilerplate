@@ -170,19 +170,4 @@ module.exports = function (plop) {
       },
     ],
   });
-  plop.setGenerator('prismicConfig', {
-    description: 'Generates a PrismicIO config file',
-    actions: [
-      {
-        type: 'add',
-        path: './',
-        templateFile: 'plop-templates/prismicConfig.hbs'
-      },
-      {
-        type: 'add',
-        path: 'pages/',
-        templateFile: 'plop-templates/nextAppFile.hbs'
-      }
-    ]
-  })
 };

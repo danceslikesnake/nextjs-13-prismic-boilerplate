@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prepare": "husky install",
     "precommit": "lint-staged",
-    "add-prismic": "npx @slicemachine/init && npm install @prismicio/next --force && plop prismicConfig"
+    "setup": "npx @slicemachine/init && npm install @prismicio/next --force"
   },
   "lint-staged": {
     "*.js": [
