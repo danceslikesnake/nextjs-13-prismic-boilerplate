@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
     <PrismicProvider
       internalLinkComponent={({ href, children, ...props }) => (
         <Link href={href} {...props}>
-          {...children}
+          {children}
         </Link>
       )}
     >
